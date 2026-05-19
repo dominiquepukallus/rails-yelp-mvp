@@ -1,21 +1,24 @@
-<div class="container mt-10px">
-  <%= link_to "Back", restaurants_path, class: "btn btn-outline-secondary mb-3"%>
+<div class="container mt-4 m-5">
 
   <%# restaurant card %>
-  <div class="card mb-4">
+  <div class="card mb-4 p-3">
     <h1><%= @restaurant.name %></h1>
     <p><strong>Address:</strong> <%= @restaurant.address %></p>
     <p><strong>Cuisine:</strong> <%= @restaurant.category %></p>
   </div>
 
+  <%# review card %>
+  <div class="card mb-4 p-3">
+    <h3>⭐️ Reviews ⭐️</h3>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="list-group-item ps-5">
+          <li><%= review.content %></li>
+          <li><%= review.rating %>/5</li>
+      <% end %>
+    </ul>
+  <%= link_to "Create new review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-success mb-3 mt-3" %>
+  </div>
+  <%= link_to "Back to list", restaurants_path, class: "btn btn-outline-secondary mb-3"%>
 
-  <h2>Reviews</h2>
-  <ul class="list-group">
-    <% @restaurant.reviews.each do |review| %>
-      <li class="list-group-item"><%= review.content %></li>
-      <li class="list-group-item"><%= review.rating %></li>
-    <% end %>
-  </ul>
-
-  <%= link_to "Create new review", new_restaurant_review_path(@restaurant) %>
 </div>

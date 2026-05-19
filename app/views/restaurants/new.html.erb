@@ -1,0 +1,6 @@
+<%# restaurants_path is plural as it refers to all the restaurants %>
+<%= link_to "Back", restaurants_path, class: "btn btn-primary"%>
+
+<h1>New Restaurant</h1>
+
+<%= render "form", restaurant: @restaurant %>
